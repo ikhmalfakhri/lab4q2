@@ -4,6 +4,7 @@
  */
 package lab2q4;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -97,7 +98,7 @@ public class Lab2q4 {
         }
 
         lineMarker(arr3);
-
+        
         if (solveuntil(arr3, 0) == false) {
             System.out.print("FAILED");
         } else{
@@ -147,7 +148,6 @@ public class Lab2q4 {
         int[] colMarked = new int[n];
         for (c = 0; c < n; c++) {
             lineCount = lineCover(arr3, rowMarked, colMarked, lineCount);
-            
 
         }
         if (lineCount < n) {
@@ -158,7 +158,7 @@ public class Lab2q4 {
 
     public static void addSub(int[][] arr3, int[] rowMarked, int[] colMarked) {
         int n = arr3.length;
-        int min = arr3[0][0];
+        int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
