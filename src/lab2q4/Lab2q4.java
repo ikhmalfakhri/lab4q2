@@ -82,6 +82,7 @@ public class Lab2q4 {
             }
             System.out.println("");
         }
+        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 arr3[i][j] = max - arr3[i][j];
@@ -99,7 +100,7 @@ public class Lab2q4 {
 
         lineMarker(arr3);
         
-        if (solveuntil(arr3, 0) == false) {
+        if (selectZeros(arr3, 0) == false) {
             System.out.print("FAILED");
         } else{
         getOutput(arr1,arr2,arr3,arr4);
@@ -151,12 +152,12 @@ public class Lab2q4 {
 
         }
         if (lineCount < n) {
-            addSub(arr3, rowMarked, colMarked);
+            addSubtract(arr3, rowMarked, colMarked);
         }
 
     }
 
-    public static void addSub(int[][] arr3, int[] rowMarked, int[] colMarked) {
+    public static void addSubtract(int[][] arr3, int[] rowMarked, int[] colMarked) {
         int n = arr3.length;
         int min = Integer.MAX_VALUE;
 
@@ -252,7 +253,7 @@ public class Lab2q4 {
         return lineCount;
     }
 
-    static boolean isSafe(int[][] arr3, int row, int col) {
+    static boolean isTaken(int[][] arr3, int row, int col) {
         int i, j;
         if (arr3[row][col] != 0) {
             return false;
@@ -267,7 +268,7 @@ public class Lab2q4 {
         return true;
     }
 
-    static boolean solveuntil(int[][] arr3, int col) {
+    static boolean selectZeros(int[][] arr3, int col) {
 
         if (col >= arr3.length) {
             return true;
@@ -275,11 +276,11 @@ public class Lab2q4 {
 
         for (int row = 0; row < arr3.length; row++) {
 
-            if(isSafe(arr3, row, col)){
+            if(isTaken(arr3, row, col)){
 
                 arr3[row][col] = -1;
 
-                if (solveuntil(arr3, col + 1) == true) {
+                if (selectZeros(arr3, col + 1) == true) {
                     return true;
                 }
                 arr3[row][col] = 0;
